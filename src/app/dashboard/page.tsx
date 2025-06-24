@@ -1,5 +1,7 @@
+"use client";
 import OverviewCard from "@/components/card/OverviewCard";
 import PerformanceChartCard from "@/components/charts/PerformanceChartCard";
+import SpendingsCategoriesCard from "@/components/charts/SpendingsCategories";
 import Heading from "@/components/typography/Heading";
 import {
   Activity,
@@ -71,6 +73,9 @@ const OverviewDashboardPage = () => {
       <section className="grid grid-cols-3 gap-8">
         <div className="col-span-2">
           <PerformanceChartCard />
+        </div>
+        <div>
+          <SpendingsCategoriesCard />
         </div>
       </section>
     </div>

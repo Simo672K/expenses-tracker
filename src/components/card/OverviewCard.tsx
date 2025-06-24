@@ -36,8 +36,7 @@ const OverviewCard = ({
             color
           )}
         >
-          {content}
-          {sign}
+          {content} {sign}
         </h4>
         <div className={cn("ms-auto", color)}>{suffixIcon}</div>
       </CardContent>
