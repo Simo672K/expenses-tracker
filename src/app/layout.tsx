@@ -1,16 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { lato } from "@/lib/fonts";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Expanses app",
@@ -24,10 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ height: "100%" }}>
-      <body
-        style={{ height: "100%" }}
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body style={{ height: "100%" }} className={`${lato.className}`}>
         {children}
       </body>
     </html>

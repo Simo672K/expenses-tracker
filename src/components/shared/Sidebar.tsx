@@ -7,6 +7,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import SidebarLink from "./SidebarLink";
+import { cn } from "@/lib/utils";
+import { poppins } from "@/lib/fonts";
 
 const Sidebar = () => {
   const BASE_ROUTE = "/dashboard";
@@ -34,7 +36,9 @@ const Sidebar = () => {
   ];
   return (
     <aside className="w-60 bg-white p-6 flex flex-col">
-      <h5 className="text-xl font-medium px-2">MyExpenses</h5>
+      <h5 className={cn(poppins.className, "text-xl font-medium px-2")}>
+        MyExpenses
+      </h5>
 
       <div className="mt-5 pt-7 flex-grow border-t">
         <nav className="h-full">
