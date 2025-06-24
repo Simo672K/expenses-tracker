@@ -9,7 +9,7 @@ import Link from "next/link";
 import SidebarLink from "./SidebarLink";
 
 const Sidebar = () => {
-  const BASE_ROUTE = "#";
+  const BASE_ROUTE = "/dashboard";
   const links = [
     {
       label: "Overview",
@@ -17,23 +17,23 @@ const Sidebar = () => {
       icon: <Telescope />,
     },
     {
-      label: "Expenses",
-      href: BASE_ROUTE + "",
+      label: "Finances",
+      href: BASE_ROUTE + "/finances",
       icon: <Banknote />,
     },
     {
       label: "Categories",
-      href: BASE_ROUTE + "",
+      href: BASE_ROUTE + "/categories",
       icon: <TableProperties />,
     },
     {
       label: "Settings",
-      href: BASE_ROUTE + "",
+      href: BASE_ROUTE + "/settings",
       icon: <Settings />,
     },
   ];
   return (
-    <aside className="w-72 bg-white p-6 flex flex-col">
+    <aside className="w-60 bg-white p-6 flex flex-col">
       <h5 className="text-xl font-medium px-2">MyExpenses</h5>
 
       <div className="mt-5 pt-7 flex-grow border-t">
@@ -41,11 +41,15 @@ const Sidebar = () => {
           <ul className="h-full flex flex-col">
             {links.map((link, index) => (
               <li key={index} className="mt-1">
-                <SidebarLink {...link} selected={index === 0} />
+                <SidebarLink {...link} />
               </li>
             ))}
             <li className="mt-auto">
-              <SidebarLink href="#" icon={<LogOut />} label="Sign out" />
+              <SidebarLink
+                href="/auth/logout"
+                icon={<LogOut />}
+                label="Sign out"
+              />
             </li>
           </ul>
         </nav>
