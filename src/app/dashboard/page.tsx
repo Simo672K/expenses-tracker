@@ -1,5 +1,7 @@
 "use client";
+import LastPurchasedItemsCard from "@/components/card/LastPushesedItemsCard";
 import OverviewCard from "@/components/card/OverviewCard";
+import SpendingsBehaviorMetricsReport from "@/components/card/SpendingsBehaviorMetricsReport";
 import PerformanceChartCard from "@/components/charts/PerformanceChartCard";
 import SpendingsCategoriesCard from "@/components/charts/SpendingsCategories";
 import Heading from "@/components/typography/Heading";
@@ -59,8 +61,9 @@ const overviewCards: Array<OverviewData> = [
     suffixIcon: <TrendingDown />,
   },
 ];
-// TODO: Spendings by category in a dauhgnat chart
+// TODO: Spendings by category in a douhgnut chart
 // TODO: list of the last items bougth with thier priority in a data table
+// TODO: Spending habits report
 const OverviewDashboardPage = () => {
   return (
     <div>
@@ -70,13 +73,13 @@ const OverviewDashboardPage = () => {
           <OverviewCard {...card} key={card.id} />
         ))}
       </section>
+      <section className="grid grid-cols-3 gap-8 mb-8">
+        <PerformanceChartCard className="col-span-2" />
+        <SpendingsCategoriesCard />
+      </section>
       <section className="grid grid-cols-3 gap-8">
-        <div className="col-span-2">
-          <PerformanceChartCard />
-        </div>
-        <div>
-          <SpendingsCategoriesCard />
-        </div>
+        <LastPurchasedItemsCard className="col-span-2" />
+        <SpendingsBehaviorMetricsReport />
       </section>
     </div>
   );

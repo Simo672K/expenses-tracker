@@ -35,7 +35,7 @@ const Sidebar = () => {
     },
   ];
   return (
-    <aside className="w-60 bg-white p-6 flex flex-col">
+    <aside className="w-60 bg-white p-6 flex flex-col sticky">
       <h5 className={cn(poppins.className, "text-xl font-medium px-2")}>
         MyExpenses
       </h5>

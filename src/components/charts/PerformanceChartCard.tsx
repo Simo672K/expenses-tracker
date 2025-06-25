@@ -1,17 +1,15 @@
 "use client";
+import { poppins } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
 import {
   Bar,
   BarChart,
-  CartesianGrid,
   Legend,
   ResponsiveContainer,
   Tooltip,
   XAxis,
-  YAxis,
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { cn } from "@/lib/utils";
-import { poppins } from "@/lib/fonts";
 import {
   Select,
   SelectContent,
@@ -19,7 +17,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { ChartNoAxesColumn } from "lucide-react";
 
 const data = [
   {
@@ -59,9 +56,13 @@ const data = [
   },
 ];
 
-const PerformanceChartCard = () => {
+const PerformanceChartCard = ({
+  className,
+}: {
+  className?: React.ReactNode;
+}) => {
   return (
-    <Card className="shadow-none border border-gray-300">
+    <Card className={cn("shadow-none border border-gray-300", className)}>
       <CardHeader className="mb-6">
         <CardTitle
           className={cn("text-2xl flex items-center gap-3", poppins.className)}
@@ -92,7 +93,7 @@ const PerformanceChartCard = () => {
             <XAxis dataKey="day" axisLine={false} tickLine={false} />
             {/* <YAxis axisLine={false} /> */}
             <Tooltip />
-            <Legend verticalAlign="top" radius={5} />
+            <Legend verticalAlign="top" iconType="circle" />
             <Bar dataKey="balance" fill="#3B82F6" radius={[15, 15, 15, 15]} />
             <Bar dataKey="spendings" fill="#F43F5E" radius={[15, 15, 15, 15]} />
           </BarChart>

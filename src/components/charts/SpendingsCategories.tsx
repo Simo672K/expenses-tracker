@@ -9,6 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { useState } from "react";
 
 const data = [
   {
@@ -47,6 +48,7 @@ const COLORS = [
 ];
 
 const SpendingsCategoriesCard = () => {
+  const [activeIndex, setIndex] = useState<number | null>(null);
   return (
     <Card className="shadow-none border border-gray-300">
       <CardHeader>
@@ -70,9 +72,18 @@ const SpendingsCategoriesCard = () => {
               outerRadius={120}
               paddingAngle={1.5}
               cornerRadius={7}
+              onMouseEnter={(_, i) => setIndex(i)}
+              onMouseLeave={() => setIndex(null)}
             >
-              {data.map((entry, i) => (
-                <Cell key={i} fill={COLORS[i % COLORS.length]} radius={5} />
+              {data.map((_, i) => (
+                <Cell
+                  key={i}
+                  fill={COLORS[i % COLORS.length]}
+                  radius={5}
+                  fillOpacity={
+                    activeIndex === null || activeIndex === i ? 1 : 0.3
+                  }
+                />
               ))}
             </Pie>
             <Tooltip />
