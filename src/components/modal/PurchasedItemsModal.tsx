@@ -8,16 +8,17 @@ import {
 } from "@/components/ui/dialog";
 import { ModalState } from "../context/ModalContext";
 import { useContext } from "react";
+import CreatePurchasedItemForm from "../form/CreateIPurchasedItemForm";
 
 const PurchasedItemsModal = () => {
   const {
-    state: { purchasedItem },
+    state: { purchasedItemModalState },
     dispatch,
   } = useContext(ModalState);
 
   return (
     <Dialog
-      open={purchasedItem}
+      open={purchasedItemModalState}
       onOpenChange={(open) =>
         dispatch({ modalType: "purchasedItem", modalState: open })
       }
@@ -25,11 +26,8 @@ const PurchasedItemsModal = () => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Add new purchased item.</DialogTitle>
-          <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </DialogDescription>
         </DialogHeader>
+        <CreatePurchasedItemForm />
       </DialogContent>
     </Dialog>
   );

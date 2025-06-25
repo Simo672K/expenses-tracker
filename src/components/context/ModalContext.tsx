@@ -1,20 +1,15 @@
 "use client";
-import {
-  ActionDispatch,
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useReducer,
-} from "react";
+import { ActionDispatch, createContext, useReducer } from "react";
 
 interface ReducerAction {
   modalType: "income" | "purchasedItem" | "category";
   modalState: boolean;
 }
+
 interface ReducerState {
-  income: boolean;
-  purchasedItem: boolean;
-  category: boolean;
+  incomeModalState: boolean;
+  purchasedItemModalState: boolean;
+  categoryModalState: boolean;
 }
 
 type StateType = {
@@ -23,10 +18,11 @@ type StateType = {
 };
 
 const initialState: ReducerState = {
-  income: false,
-  purchasedItem: false,
-  category: false,
+  incomeModalState: false,
+  purchasedItemModalState: false,
+  categoryModalState: false,
 };
+
 export const ModalState = createContext<StateType>({
   state: initialState,
   dispatch: function () {},
@@ -39,13 +35,14 @@ interface Props {
 const modalReducer = (state: ReducerState, action: ReducerAction) => {
   switch (action.modalType) {
     case "income":
-      return { ...state, income: action.modalState };
+      return { ...state, incomeModalState: action.modalState };
     case "purchasedItem":
-      return { ...state, purchasedItem: action.modalState };
+      return { ...state, purchasedItemModalState: action.modalState };
     case "category":
-      return { ...state, category: action.modalState };
+      return { ...state, categoryModalState: action.modalState };
   }
 };
+
 export const ModalStateProvider = (props: Props) => {
   const [state, dispatch] = useReducer(modalReducer, initialState);
 

@@ -8,16 +8,17 @@ import {
 } from "@/components/ui/dialog";
 import { ModalState } from "../context/ModalContext";
 import { useContext } from "react";
+import CreateCategoryForm from "../form/CreateCategoryForm";
 
 const CategoryModal = () => {
   const {
-    state: { category },
+    state: { categoryModalState },
     dispatch,
   } = useContext(ModalState);
 
   return (
     <Dialog
-      open={category}
+      open={categoryModalState}
       onOpenChange={(open) =>
         dispatch({ modalType: "category", modalState: open })
       }
@@ -25,11 +26,8 @@ const CategoryModal = () => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Add new category.</DialogTitle>
-          <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </DialogDescription>
         </DialogHeader>
+        <CreateCategoryForm />
       </DialogContent>
     </Dialog>
   );

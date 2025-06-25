@@ -2,22 +2,22 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
 import { ModalState } from "../context/ModalContext";
 import { useContext } from "react";
+import CreateIncomeForm from "../form/CreateIncomeForm";
 
 const IncomeModal = () => {
   const {
-    state: { income },
+    state: { incomeModalState },
     dispatch,
   } = useContext(ModalState);
 
   return (
     <Dialog
-      open={income}
+      open={incomeModalState}
       onOpenChange={(open) =>
         dispatch({ modalType: "income", modalState: open })
       }
@@ -25,11 +25,8 @@ const IncomeModal = () => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Add new income source.</DialogTitle>
-          <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </DialogDescription>
         </DialogHeader>
+        <CreateIncomeForm />
       </DialogContent>
     </Dialog>
   );
